@@ -34,7 +34,7 @@ The app you’ll be working with is a **Posts App** that retrieves data from an 
 ## Expected Outcome
 
 - By the end of this task, the app should be like this:
-![1000000362.jpg](../../Downloads/image_test.jpg)
+![image_test](https://github.com/user-attachments/assets/420bfad3-20a7-4f5a-aefc-bd68a01b3ee3)
 
 ---
 
