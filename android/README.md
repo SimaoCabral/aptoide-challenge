@@ -31,5 +31,5 @@ The app you’ll be working with is a **Posts App** that retrieves data from an 
 ## EVALUATION CRITERIA ✅
 
 - By the end of this task, you should have a working application without errors which should look like this:
-  ![1000000362.jpg](../../Downloads/image_test.jpg)
+![image_test](https://github.com/user-attachments/assets/420bfad3-20a7-4f5a-aefc-bd68a01b3ee3)
 - Clarity and simplicity of the README.md file (that explains which were the errors found and how did you solve them).
