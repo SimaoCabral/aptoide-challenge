@@ -22,8 +22,5 @@ Build a Python script capable of performing HTTP requests with the correct param
 
 ## EVALUATION CRITERIA ✅
 - The correct execution of the 3 previous steps.
-- Correctness of the script implementation (with clear and well structured code).
+- Correctness of the script implementation (with clear and well-structured code).
 - Clarity and simplicity of the README.md file (that explains how to run your script).
-
-## SUBMISSION
-Submit your project as a GitHub repository containing your code and the README.md and share the link with the Aptoide Recruitment team.
