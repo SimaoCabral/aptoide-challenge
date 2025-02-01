@@ -1,9 +1,10 @@
-def extract_q(link):
+def extract_from_link(link,parameter):
     """
-    Directly extract q value the link
+    Directly extract parameter value from the link.
 
-    :param link: Original url to extract Q from
-    :return: q value extracted from url.
+    :param link: Original url to extract from.
+    :param parameter: Parameter key to extract.
+    :return: Value with parameter key  extracted from url.
     """
     q = ""
     for char in link:
@@ -11,10 +12,8 @@ def extract_q(link):
         if q and char=="/":
             #removing the key
             q=q[2:]
-            #padding for base64 decoding
-            q += "=" * (4 - len(q) % 4)
             break
         #from start until the end condition
-        if char=="q" or q:
+        if char == parameter or q:
             q+=char
     return q
