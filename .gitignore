@@ -9,3 +9,4 @@
 local.properties
 **.idea
 **__pycache__
+/python/download_file
