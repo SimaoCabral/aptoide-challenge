@@ -2,6 +2,8 @@ import base64
 
 import requests
 
+#After making a test request to link, the response says that the missing parameter name is aptoide_uid
+
 missing_key = "aptoide_uid"
 dummy_value = "testchallenge"
 filename = "download_file/"+dummy_value + ".apk"
