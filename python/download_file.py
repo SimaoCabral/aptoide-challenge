@@ -10,6 +10,7 @@ split_link = link.split('/')
 #Get base64 parameters from URL
 base64encoded,decoded_param = split_link[-1].split('?')
 #Decoding base64 values
+base64encoded += "=" * (4 - len(base64encoded) % 4)
 initial_params = base64.b64decode(base64encoded).decode('utf-8')
 #Reconstructing parameters
 completed_params = initial_params +"&"+missing_key+"="+dummy_value+"&"+decoded_param
