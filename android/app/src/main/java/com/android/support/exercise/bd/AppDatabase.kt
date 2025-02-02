@@ -12,31 +12,20 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
-        private var INSTANCE: AppDatabase? = null
 
-        private fun initDatabase(context: Context) {
-            if (INSTANCE == null) {
-                synchronized(AppDatabase::class.java) {
-                    INSTANCE =
-                        Room.databaseBuilder(context, AppDatabase::class.java, "user-database")
-                            .build()
-
-                    if (INSTANCE!!.userDao().getUserCount() == 0) {
-                        INSTANCE!!.userDao().insertUser(
-                            User(
-                                1,
-                                "John Doe",
-                                "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Barack_Obama_profile.jpg/446px-Barack_Obama_profile.jpg"
-                            )
-                        )
-                    }
-                }
+        fun getDatabase(context: Context): AppDatabase {
+            val app =  Room.databaseBuilder(context, AppDatabase::class.java, "user-database")
+                .build()
+            if (app.userDao().getUserCount() == 0){
+                app.userDao().insertUser(
+                    User(
+                        1,
+                        "John Doe",
+                        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Barack_Obama_profile.jpg/446px-Barack_Obama_profile.jpg"
+                    )
+                )
             }
-        }
-
-        fun getDatabase(context: Context): AppDatabase? {
-            initDatabase(context)
-            return INSTANCE
+            return app
         }
     }
 }
