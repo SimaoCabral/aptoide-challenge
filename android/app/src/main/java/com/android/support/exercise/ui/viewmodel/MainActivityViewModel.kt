@@ -1,6 +1,7 @@
 package com.android.support.exercise.ui.viewmodel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,9 @@ import com.android.support.exercise.data.Post
 import com.android.support.exercise.network.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivityViewModel : ViewModel() {
 
@@ -28,7 +31,7 @@ class MainActivityViewModel : ViewModel() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val posts = RetrofitClient.apiService.getPosts()
-                CoroutineScope(Dispatchers.Main).launch {
+                withContext(Dispatchers.Main){
                     _posts.value = posts.toCollection(arrayListOf())
                 }
             } catch (e: Exception) {
@@ -38,15 +41,20 @@ class MainActivityViewModel : ViewModel() {
     }
 
     fun loadUserData(context: Context) {
-        try {
-            AppDatabase.getDatabase(context)
-                ?.userDao()
-                ?.getAllUsers()?.firstOrNull()?.let {
-                    _userName.value = it.name
-                    _userImage.value = it.image
-                }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                AppDatabase.getDatabase(context)
+                    .userDao()
+                    .getAllUsers().firstOrNull()?.let {
+                        withContext(Dispatchers.Main){
+                            _userName.value = it.name
+                            _userImage.value = it.image
+                        }
+                    }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
+
     }
 }
