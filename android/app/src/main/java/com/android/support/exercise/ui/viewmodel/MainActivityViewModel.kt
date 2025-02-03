@@ -44,8 +44,8 @@ class MainActivityViewModel : ViewModel() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 AppDatabase.getDatabase(context)
-                    .userDao()
-                    .getAllUsers().firstOrNull()?.let {
+                    ?.userDao()
+                    ?.getAllUsers()?.firstOrNull()?.let {
                         withContext(Dispatchers.Main){
                             _userName.value = it.name
                             _userImage.value = it.image
