@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel = MainActivityViewModel()
+    private val viewModel : MainActivityViewModel by viewModels()
 
     private lateinit var postAdapter: PostAdapter
 
